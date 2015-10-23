@@ -150,12 +150,11 @@
     <orderEntry type="library" exported="" name="google-http-client-android-1.19.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-panorama-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-fitness-8.1.0" level="project" />
-    <orderEntry type="library" exported="" name="guava-jdk5-13.0" level="project" />
     <orderEntry type="library" exported="" name="google-oauth-client-1.19.0" level="project" />
+    <orderEntry type="library" exported="" name="guava-jdk5-13.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-wearable-8.1.0" level="project" />
     <orderEntry type="library" exported="" name="google-api-client-1.19.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-8.1.0" level="project" />
     <orderEntry type="module" module-name="jokesactivitymodule" exported="" />
-    <orderEntry type="module" module-name="jokesmodule" exported="" />
   </component>
 </module>

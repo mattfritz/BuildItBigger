@@ -3,15 +3,15 @@ package com.mattfritz.jokes.backend;
 /**
  * The object model for the data we are sending through endpoints
  */
-public class MyBean {
+public class JokesBean {
 
-    private String myData;
+    private String Data;
 
     public String getData() {
-        return myData;
+        return Data;
     }
 
     public void setData(String data) {
-        myData = data;
+        Data = data;
     }
 }
