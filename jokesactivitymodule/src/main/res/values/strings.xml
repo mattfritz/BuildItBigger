@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">JokesActivityModule</string>
+    <string name="app_name">Jokes</string>
+    <string name="jokes_header">Get Ready to Laugh!</string>
+    <string name="joke_empty_text">Sorry, no jokes today!</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

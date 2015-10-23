@@ -1,0 +1,13 @@
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <fragment android:id="@+id/jokes_fragment"
+        android:name="com.mattfritz.jokesactivitymodule.JokeFragment"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:layout="@layout/fragment_joke" />
+
+</FrameLayout>
