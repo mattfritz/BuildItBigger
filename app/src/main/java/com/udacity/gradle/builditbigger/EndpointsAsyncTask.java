@@ -18,6 +18,7 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
     private static final String JOKE_TAG = "com.mattfritz.jokesactivitymodule.JOKE";
     private static MyApi myApiService = null;
     private Context context;
+    private EndpointsAsyncTaskListener mListener;
 
     @Override
     protected String doInBackground(Context... params) {
@@ -36,11 +37,26 @@ class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
         }
     }
 
-
     @Override
     protected void onPostExecute(String result) {
+        // Run listener callback if an onComplete listener is defined
+        if (mListener != null) {
+            mListener.onComplete(result);
+        }
+
+        // Start JokeActivity with returned data
         Intent intent = new Intent(context, JokeActivity.class);
         intent.putExtra(JOKE_TAG, result);
         context.startActivity(intent);
+    }
+
+    public EndpointsAsyncTask setListener(EndpointsAsyncTaskListener listener) {
+        this.mListener = listener;
+        return this;
+    }
+
+    public static interface EndpointsAsyncTaskListener {
+        // Require onComplete override when creating listener
+        public void onComplete(String result);
     }
 }
