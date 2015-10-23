@@ -12,6 +12,11 @@ public class JokesModule {
         mJokes.add("Eagles may soar, but weasels don't get sucked into jet engines.");
         mJokes.add("Why did the scarecrow win an award? He was outstanding in his field.");
         mJokes.add("What do you call a drummer without a girlfriend? Homeless.");
+        mJokes.add("I bought the world's worst thesaurus yesterday. Not only is it terrible, it's terrible.");
+        mJokes.add("Why didn't the lifeguard save the drowning hippie? He was too far out, man.");
+        mJokes.add("And God said to John, come forth and you shall be granted eternal life. But John came fifth and won a toaster");
+        mJokes.add("What can think the unthinkable? An itheberg.");
+        mJokes.add("A computer scientist goes to get some groceries. Before he leaves, his wife tells him \"while you're there, get some eggs\". He never comes home.");
     }
 
     public String getRandomJoke() {
