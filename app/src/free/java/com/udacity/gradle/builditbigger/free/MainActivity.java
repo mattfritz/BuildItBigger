@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -16,10 +17,12 @@ import com.udacity.gradle.builditbigger.R;
 public class MainActivity extends ActionBarActivity {
     private InterstitialAd mInterstitialAd;
     private Context mContext;
+    private ProgressBar mSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         // Configure interstitial
         mContext = this;
@@ -32,6 +35,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onAdClosed() {
                 requestNewInterstitial();
+                mSpinner.setVisibility(ProgressBar.VISIBLE);
                 new EndpointsAsyncTask().execute(mContext);
             }
         });
@@ -39,7 +43,9 @@ public class MainActivity extends ActionBarActivity {
         // Preload an interstitial ad
         requestNewInterstitial();
 
-        setContentView(R.layout.activity_main);
+        // Set up progressbar
+        mSpinner = (ProgressBar) findViewById(R.id.progress_bar);
+        mSpinner.setVisibility(ProgressBar.GONE);
     }
 
 

@@ -5,13 +5,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 
 public class MainActivity extends ActionBarActivity {
+    private ProgressBar mSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSpinner = (ProgressBar) findViewById(R.id.progress_bar);
+        mSpinner.setVisibility(ProgressBar.GONE);
     }
 
 
@@ -38,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
+        mSpinner.setVisibility(ProgressBar.VISIBLE);
         new EndpointsAsyncTask().execute(this);
     }
 }
