@@ -1,18 +1,44 @@
 package com.udacity.gradle.builditbigger.free;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.udacity.gradle.builditbigger.R;
 
 
 public class MainActivity extends ActionBarActivity {
+    private InterstitialAd mInterstitialAd;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Configure interstitial
+        mContext = this;
+        mInterstitialAd = new InterstitialAd(this);
+        String adUnitId = getResources().getString(R.string.interstitial_ad_unit_id);
+        mInterstitialAd.setAdUnitId(adUnitId);
+
+        // When ad is closed, pre-fetch a new ad and execute page transition
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+                new EndpointsAsyncTask().execute(mContext);
+            }
+        });
+
+        // Preload an interstitial ad
+        requestNewInterstitial();
+
         setContentView(R.layout.activity_main);
     }
 
@@ -40,6 +66,18 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        new EndpointsAsyncTask().execute(this);
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            // If ad will not load, continue to new view
+            new EndpointsAsyncTask().execute(mContext);
+        }
+    }
+
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mInterstitialAd.loadAd(adRequest);
     }
 }
