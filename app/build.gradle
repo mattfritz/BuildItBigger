@@ -36,3 +36,16 @@ dependencies {
     freeCompile 'com.google.android.gms:play-services-ads:8.1.0'
     compile project(path: ':backend', configuration: 'android-endpoints')
 }
+
+task testIntegration(dependsOn: ':backend:appengineRun') {
+    project(':backend').afterEvaluate { backend ->
+        backend.extensions.appengine.daemon = true
+    }
+    doFirst {
+        println 'Running tests'
+        tasks.test.execute()
+    }
+}
+
+tasks.testIntegration.finalizedBy ':backend:appengineStop'
+
